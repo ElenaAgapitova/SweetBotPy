@@ -30,7 +30,7 @@ async def start_new_game(message: Message):
         if toss:
             await player.player_turn(message)
         else:
-            await bot_raccon.bot_turn(message, random.randint(1, 28))
+            await bot_raccon.bot_turn(message)
 
 
 @dp.message_handler()
@@ -50,7 +50,7 @@ async def take(message: Message):
                     return
                 await message.answer(f'{name} взял(а) - {take}, и на столе осталось - '
                                      f'{game.get_total()}. Ходит Енот.')
-                await bot_raccon.bot_turn(message, take)
+                await bot_raccon.bot_turn(message)
             else:
                 await message.answer("Что-то много! Можно брать не более 28.")
         else:

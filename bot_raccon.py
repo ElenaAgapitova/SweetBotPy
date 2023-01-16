@@ -5,12 +5,12 @@ import player
 import game_over
 
 
-async def bot_turn(message: Message, take: int):
+async def bot_turn(message: Message):
     total = game.get_total()
-    if 29 < total <= 57:
-        take = total-29
-    elif total <= 28:
+    if total <= 28:
         take = total
+    elif total % 29:
+        take = total % 29
     else:
         take = random.randint(1, 28)
     await message.answer(f'Енот взял - {take}, конфет осталось - {game.take_candies(take)}')
